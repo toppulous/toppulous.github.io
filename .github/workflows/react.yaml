@@ -33,5 +33,6 @@ jobs:
       - name: install and deploy
         run: |
           npm install
+          ls node_modules
           npm run deploy 
     
