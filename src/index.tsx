@@ -5,9 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
+import { Helmet } from 'react-helmet';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
+    <Helmet>
+      <title>toppulous.github.io</title>
+      <link rel="fluid-icon" href="https://github.com/fluidicon.png" />
+    </Helmet>
     <CssBaseline/>
     <App />
   </ThemeProvider>,
