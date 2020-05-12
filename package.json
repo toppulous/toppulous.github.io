@@ -1,9 +1,11 @@
 {
   "name": "github-pages",
-  "homepage":"https://toppulous.github.io",
+  "homepage": "https://toppulous.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -11,9 +13,11 @@
     "@types/node": "^12.12.38",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/material-ui": "^0.21.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "typeface-roboto": "0.0.75",
     "typescript": "^3.7.5"
   },
   "scripts": {
