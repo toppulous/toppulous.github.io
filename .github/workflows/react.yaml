@@ -53,7 +53,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: configure git
-        uses: fusion-engineering/setup-git-credentials@v2
+        uses: fregante/setup-git-token@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: set origin
