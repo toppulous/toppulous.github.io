@@ -1,5 +1,5 @@
 import React from 'react';
-import Routes from './Routes';
+import Routes from '../routes';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
