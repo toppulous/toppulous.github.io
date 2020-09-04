@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import About from '../about';
 import Home from '../home';
-import Projects from '../projects';
+import { Projects, projectList } from '../projects';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -151,9 +151,11 @@ function Routes() {
                           onClick={handleProjectsClick}/>
             <Collapse component="li" in={projectsOpen} timeout="auto" unmountOnExit>
               <List disablePadding>
-                <ListItemLink to="/projects/project1"
-                              primary="project1"
-                              className={classes.nestedList} />
+                {projectList.map((project, index) => (
+                  <ListItemLink to={`/projects/${project.subPage}`}
+                                primary={project.name}
+                                className={classes.nestedList} />
+                ))}
               </List>
             </Collapse>
           </List>
