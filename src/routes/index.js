@@ -1,38 +1,34 @@
-import React from 'react';
-import clsx from 'clsx';
-import About from '../about';
-import Home from '../home';
-import { Projects, projectList } from '../projects';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItemLink from './listItemLink';
-import Collapse from '@material-ui/core/Collapse';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import HomeIcon from '@material-ui/icons/Home';
-import InfoIcon from '@material-ui/icons/Info';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import React from 'react'
+import clsx from 'clsx'
+import About from '../about'
+import Home from '../home'
+import { Projects, projectList } from '../projects'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Drawer from '@material-ui/core/Drawer'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import List from '@material-ui/core/List'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+import MenuIcon from '@material-ui/icons/Menu'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import ListItemLink from './listItemLink'
+import Collapse from '@material-ui/core/Collapse'
+import InstagramIcon from '@material-ui/icons/Instagram'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import TwitterIcon from '@material-ui/icons/Twitter'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import HomeIcon from '@material-ui/icons/Home'
+import InfoIcon from '@material-ui/icons/Info'
+import AccountTreeIcon from '@material-ui/icons/AccountTree'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -91,28 +87,30 @@ const useStyles = makeStyles((theme) => ({
   nestedList: {
     paddingLeft: theme.spacing(6),
   },
-}));
+}))
 
 function Routes() {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [menuOpen, setMenuOpen] = React.useState(true);
-  const [projectsOpen, setProjectsOpen] = React.useState(false);
+  const classes = useStyles()
+  const theme = useTheme()
+  const [menuOpen, setMenuOpen] = React.useState(true)
+  const [projectsOpen, setProjectsOpen] = React.useState(false)
 
   const handleProjectsClick = () => {
-    setProjectsOpen((prevOpen) => !prevOpen);
-  };
+    setProjectsOpen((prevOpen) => !prevOpen)
+  }
   const handleDrawerOpen = () => {
-    setMenuOpen(true);
-  };
+    setMenuOpen(true)
+  }
   const handleDrawerClose = () => {
-    setMenuOpen(false);
-  };
+    setMenuOpen(false)
+  }
 
   return (
     <Router>
       <div className={classes.root}>
-        <AppBar position="fixed" className={clsx(classes.appBar, { [classes.appBarShift]: menuOpen,})}>
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, { [classes.appBarShift]: menuOpen })}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -132,54 +130,67 @@ function Routes() {
           variant="persistent"
           anchor="left"
           open={menuOpen}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
+          classes={{ paper: classes.drawerPaper }}>
           <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'ltr' ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
             </IconButton>
           </div>
           <Divider />
           <List>
-            <ListItemLink to="/" primary="Home" icon={<HomeIcon/>} />
-            <ListItemLink to="/about" primary="About" icon={<InfoIcon/>} />
-            <ListItemLink to="/projects" primary="Projects"
-                          icon={<AccountTreeIcon/>}
-                          open={projectsOpen}
-                          onClick={handleProjectsClick}/>
-            <Collapse component="li" in={projectsOpen} timeout="auto" unmountOnExit>
+            <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
+            <ListItemLink to="/about" primary="About" icon={<InfoIcon />} />
+            <ListItemLink
+              to="/projects"
+              primary="Projects"
+              icon={<AccountTreeIcon />}
+              open={projectsOpen}
+              onClick={handleProjectsClick}
+            />
+            <Collapse
+              component="li"
+              in={projectsOpen}
+              timeout="auto"
+              unmountOnExit>
               <List disablePadding>
                 {projectList.map((project, index) => (
-                  <ListItemLink to={`/projects/${project.subPage}`}
-                                primary={project.name}
-                                className={classes.nestedList} />
+                  <ListItemLink
+                    to={`/projects/${project.subPage}`}
+                    primary={project.name}
+                    className={classes.nestedList}
+                  />
                 ))}
               </List>
             </Collapse>
           </List>
-          <Divider/>
+          <Divider />
           <ButtonGroup variant="text" fullWidth={true}>
-          <Button aria-label="GitHub" href="https://github.com/toppulous">
-            <GitHubIcon />
-          </Button>
-          <Button aria-label="Linkedin" href="https://www.linkedin.com/in/toppulous/">
-            <LinkedInIcon />
-          </Button>
-          <Button aria-label="Instagram" href="https://www.instagram.com/toppulous/">
-            <InstagramIcon/>
-          </Button>
-          <Button aria-label="Twitter" href="https://twitter.com/toppulous">
-            <TwitterIcon />
-          </Button>
+            <Button aria-label="GitHub" href="https://github.com/toppulous">
+              <GitHubIcon />
+            </Button>
+            <Button
+              aria-label="Linkedin"
+              href="https://www.linkedin.com/in/toppulous/">
+              <LinkedInIcon />
+            </Button>
+            <Button
+              aria-label="Instagram"
+              href="https://www.instagram.com/toppulous/">
+              <InstagramIcon />
+            </Button>
+            <Button aria-label="Twitter" href="https://twitter.com/toppulous">
+              <TwitterIcon />
+            </Button>
           </ButtonGroup>
         </Drawer>
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: menuOpen,
-          })}
-        >
+          })}>
           <div className={classes.drawerHeader} />
           <Switch>
             <Route path="/about">
@@ -198,6 +209,6 @@ function Routes() {
   )
 }
 
-export default Routes;
+export default Routes
 
-export { Routes };
+export { Routes }
