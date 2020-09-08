@@ -186,6 +186,7 @@ function Routes() {
               <TwitterIcon />
             </Button>
           </ButtonGroup>
+          <Divider />
         </Drawer>
         <main
           className={clsx(classes.content, {
